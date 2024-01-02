@@ -18,7 +18,7 @@ namespace WeatherApp.Controllers
 		[Route("home")]
 		public IActionResult Index()
 		{
-			
+
 
 			//ViewData["cityWeatherList"] = cityWeatherList;
 			//ViewBag.CityWeatherList = cityWeatherList;
@@ -26,11 +26,24 @@ namespace WeatherApp.Controllers
 			return View(cityWeatherList);
 		}
 
-		[Route("weather/test")]
+		[Route("weather/{cityCode}")]
 		public IActionResult Details()
 		{
-			
-			return View(cityWeatherList[0]);
+			var cityCode = HttpContext.Request.RouteValues["cityCode"];
+
+			foreach (CityWeather item in cityWeatherList)
+			{
+				if (item.CityUniqueCode == cityCode.ToString())
+				{
+					return View(item);
+				}
+				
+			}
+
+			HttpContext.Response.StatusCode = 404;
+			return View("ErrorPage"); // should it return 404??
+									  //return NotFound("WRONG CITY CODE!!!!");
+
 		}
 	}
 }
