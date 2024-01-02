@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using WeatherApp.Models
+@model IEnumerable<CityWeather>
+
+
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Weather App by Vonzo</title>
@@ -9,6 +13,37 @@
 	<div class="page-content">
 		<h1>Welcome to the worlds greatest WEATHER APP!</h1>
 		<h2>Carefully crafted by Slavomiro Vonzo himself</h2>
+
+		<div>
+
+
+			@foreach (CityWeather item in Model)
+			{
+				<p>@item.CityName</p>
+			}
+
+
+			<table>
+				<tbody>
+
+						@foreach (CityWeather city in Model)
+						{
+							<tr class="box w-25 inline-block orange-back">
+								<td class="w-75">
+									<p>@city.CityName</p>
+									<p>@city.DateAndTime.ToShortTimeString()</p>
+								<a href="weather/test">Details</a>
+								</td>
+								<td class="border-left padding-left-45">
+									<p>@city.TemperatureFahrenheit</p>
+								</td>
+							</tr>
+						}
+
+				</tbody>
+			</table>
+
+		</div>
 	</div>
 </body>
 </html>
