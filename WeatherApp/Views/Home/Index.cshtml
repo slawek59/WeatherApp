@@ -1,5 +1,4 @@
-﻿@using WeatherApp.Models
-@model IEnumerable<CityWeather>
+﻿@model IEnumerable<CityWeather>
 
 
 <!DOCTYPE html>
@@ -15,35 +14,73 @@
 		<h2>Carefully crafted by Slavomiro Vonzo himself</h2>
 
 		<div>
-
-
-			@foreach (CityWeather item in Model)
-			{
-				<p>@item.CityName</p>
-			}
-
-
 			<table>
 				<tbody>
-
-						@foreach (CityWeather city in Model)
+					@foreach (CityWeather city in Model)
+					{
+						if (city.TemperatureFahrenheit < 44)
 						{
-							<tr class="box w-25 inline-block orange-back">
+							<tr class="box w-25 inline-block blue-back">
 								<td class="w-75">
-									<p>@city.CityName</p>
-									<p>@city.DateAndTime.ToShortTimeString()</p>
-								
-								<a href="weather/@city.CityUniqueCode">Details</a>
+									<p>
+										@city.CityName
+									</p>
+									<p>
+										@city.DateAndTime.ToShortTimeString()
+									</p>
+
+									<a href="weather/@city.CityUniqueCode">Details</a>
 								</td>
 								<td class="border-left padding-left-45">
-									<p>@city.TemperatureFahrenheit</p>
+									<p>
+										@city.TemperatureFahrenheit
+									</p>
 								</td>
 							</tr>
 						}
+						else if (city.TemperatureFahrenheit >= 44 && city.TemperatureFahrenheit <= 74)
+						{
+							<tr class="box w-25 inline-block green-back">
+								<td class="w-75">
+									<p>
+										@city.CityName
+									</p>
+									<p>
+										@city.DateAndTime.ToShortTimeString()
+									</p>
 
+									<a href="weather/@city.CityUniqueCode">Details</a>
+								</td>
+								<td class="border-left padding-left-45">
+									<p>
+										@city.TemperatureFahrenheit
+									</p>
+								</td>
+							</tr>
+						}
+						else if (city.TemperatureFahrenheit > 74)
+						{
+							<tr class="box w-25 inline-block orange-back">
+								<td class="w-75">
+									<p>
+										@city.CityName
+									</p>
+									<p>
+										@city.DateAndTime.ToShortTimeString()
+									</p>
+
+									<a href="weather/@city.CityUniqueCode">Details</a>
+								</td>
+								<td class="border-left padding-left-45">
+									<p>
+										@city.TemperatureFahrenheit
+									</p>
+								</td>
+							</tr>
+						}
+					}
 				</tbody>
 			</table>
-
 		</div>
 	</div>
 </body>
