@@ -1,13 +1,12 @@
 ﻿@model CityWeather
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>@Model.CityName City Weather</title>
-	<meta name="viewport" content="width=device-width" charset="utf-8" />
-	<link href="~/StyleSheet (1).css" rel="stylesheet" />
-</head>
-<body>
+
+@{
+	ViewBag.Title = $"{@Model.CityName} City Weather";
+}
+
+
+	
 	<div class="page-content">
 		<div class="header">
 			<h1>Weather for @Model.CityName</h1>
@@ -41,6 +40,3 @@
 			</p>
 		</div>
 	</div>
-	<footer class="header">Carefully crafted by Slavomiro Vonzo himself</footer>
-</body>
-</html>

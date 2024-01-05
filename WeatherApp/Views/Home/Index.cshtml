@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<CityWeather>
 
 @{
+	ViewBag.Title = "Weather App by Vonzo";
+
 	string GetCssClass(int Temperature)
 	{
 		return Temperature switch
@@ -12,20 +14,10 @@
 	}
 }
 
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Weather App by Vonzo</title>
-	<meta name="viewport" content="width=device-width" charset="utf-8" />
-	<link href="~/StyleSheet (1).css" rel="stylesheet" />
-</head>
-<body>
 	<div class="page-content">
 		<div class="header">
 			<h1>Welcome to the worlds greatest WEATHER APP!</h1>
 		</div>
-		@* <h2 class="text-center">Carefully crafted by Slavomiro Vonzo himself</h2> *@
 
 		<div class="margin-left margin-top">
 
@@ -55,6 +47,3 @@
 			}
 		</div>
 	</div>
-	<footer class="header">Carefully crafted by Slavomiro Vonzo himself</footer>
-</body>
-</html>
