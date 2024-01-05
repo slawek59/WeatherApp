@@ -6,3 +6,6 @@ app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();
+
+
+// layout views, _ViewImports, _ViewStart, 

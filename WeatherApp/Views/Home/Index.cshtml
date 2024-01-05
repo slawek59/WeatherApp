@@ -25,9 +25,9 @@
 		<div class="header">
 			<h1>Welcome to the worlds greatest WEATHER APP!</h1>
 		</div>
-		<h2 class="text-center">Carefully crafted by Slavomiro Vonzo himself</h2>
+		@* <h2 class="text-center">Carefully crafted by Slavomiro Vonzo himself</h2> *@
 
-		<div class="margin-left">
+		<div class="margin-left margin-top">
 
 			@foreach (CityWeather city in Model)
 			{
@@ -41,7 +41,7 @@
 							<p class="text-dark-grey">
 								<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
 							</p>
-							
+
 							<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
 						</div>
 
@@ -55,5 +55,6 @@
 			}
 		</div>
 	</div>
+	<footer class="header">Carefully crafted by Slavomiro Vonzo himself</footer>
 </body>
 </html>
