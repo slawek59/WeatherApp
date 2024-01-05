@@ -10,10 +10,12 @@
 </head>
 <body>
 	<div class="page-content">
-		<h1>Welcome to the worlds greatest WEATHER APP!</h1>
-		<h2>Carefully crafted by Slavomiro Vonzo himself</h2>
+		<div class="header">
+			<h1>Welcome to the worlds greatest WEATHER APP!</h1>
+		</div>
+		<h2 class="text-center">Carefully crafted by Slavomiro Vonzo himself</h2>
 
-		<div>
+		<div class="margin-left">
 			<table>
 				<tbody>
 					@foreach (CityWeather city in Model)
@@ -23,17 +25,17 @@
 							<tr class="box w-25 inline-block blue-back">
 								<td class="w-75">
 									<p>
-										@city.CityName
+										<b>@city.CityName</b>
 									</p>
-									<p>
-										@city.DateAndTime.ToShortTimeString()
+									<p class="text-dark-grey">
+										<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
 									</p>
 
-									<a href="weather/@city.CityUniqueCode">Details</a>
+									<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
 								</td>
-								<td class="border-left padding-left-45">
+								<td class="border-left padding-left w-50">
 									<p>
-										@city.TemperatureFahrenheit
+										<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
 									</p>
 								</td>
 							</tr>
@@ -43,17 +45,17 @@
 							<tr class="box w-25 inline-block green-back">
 								<td class="w-75">
 									<p>
-										@city.CityName
+										<b>@city.CityName</b>
 									</p>
-									<p>
-										@city.DateAndTime.ToShortTimeString()
+									<p class="text-dark-grey">
+										<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
 									</p>
 
-									<a href="weather/@city.CityUniqueCode">Details</a>
+									<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
 								</td>
-								<td class="border-left padding-left-45">
+								<td class="border-left padding-left w-50">
 									<p>
-										@city.TemperatureFahrenheit
+										<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
 									</p>
 								</td>
 							</tr>
@@ -63,17 +65,17 @@
 							<tr class="box w-25 inline-block orange-back">
 								<td class="w-75">
 									<p>
-										@city.CityName
+										<b>@city.CityName</b>
 									</p>
-									<p>
-										@city.DateAndTime.ToShortTimeString()
+									<p class="text-dark-grey">
+										<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
 									</p>
 
-									<a href="weather/@city.CityUniqueCode">Details</a>
+									<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
 								</td>
-								<td class="border-left padding-left-45">
+								<td class="border-left padding-left w-50">
 									<p>
-										@city.TemperatureFahrenheit
+										<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
 									</p>
 								</td>
 							</tr>
