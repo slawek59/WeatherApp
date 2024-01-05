@@ -1,11 +1,23 @@
 ﻿@model IEnumerable<CityWeather>
 
+@{
+	string GetCssClass(int Temperature)
+	{
+		return Temperature switch
+		{
+			(< 44) => "blue-back",
+			(>= 44) and (< 75) => "green-back",
+			(>= 75) => "orange-back",
+		};
+	}
+}
+
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Weather App by Vonzo</title>
-	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" charset="utf-8" />
 	<link href="~/StyleSheet (1).css" rel="stylesheet" />
 </head>
 <body>
@@ -16,73 +28,31 @@
 		<h2 class="text-center">Carefully crafted by Slavomiro Vonzo himself</h2>
 
 		<div class="margin-left">
-			<table>
-				<tbody>
-					@foreach (CityWeather city in Model)
-					{
-						if (city.TemperatureFahrenheit < 44)
-						{
-							<tr class="box w-25 inline-block blue-back">
-								<td class="w-75">
-									<p>
-										<b>@city.CityName</b>
-									</p>
-									<p class="text-dark-grey">
-										<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
-									</p>
 
-									<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
-								</td>
-								<td class="border-left padding-left w-50">
-									<p>
-										<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
-									</p>
-								</td>
-							</tr>
-						}
-						else if (city.TemperatureFahrenheit >= 44 && city.TemperatureFahrenheit <= 74)
-						{
-							<tr class="box w-25 inline-block green-back">
-								<td class="w-75">
-									<p>
-										<b>@city.CityName</b>
-									</p>
-									<p class="text-dark-grey">
-										<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
-									</p>
+			@foreach (CityWeather city in Model)
+			{
+				<div class="box w-30 margin-auto @GetCssClass(city.TemperatureFahrenheit)">
+					<div class="flex-borderless">
+						<div class="w-50">
+							<p>
+								<b>@city.CityName</b>
+							</p>
 
-									<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
-								</td>
-								<td class="border-left padding-left w-50">
-									<p>
-										<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
-									</p>
-								</td>
-							</tr>
-						}
-						else if (city.TemperatureFahrenheit > 74)
-						{
-							<tr class="box w-25 inline-block orange-back">
-								<td class="w-75">
-									<p>
-										<b>@city.CityName</b>
-									</p>
-									<p class="text-dark-grey">
-										<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
-									</p>
+							<p class="text-dark-grey">
+								<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
+							</p>
+							
+							<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
+						</div>
 
-									<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
-								</td>
-								<td class="border-left padding-left w-50">
-									<p>
-										<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
-									</p>
-								</td>
-							</tr>
-						}
-					}
-				</tbody>
-			</table>
+						<div class="border-left w-50">
+							<p class="padding-left">
+								<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			}
 		</div>
 	</div>
 </body>
