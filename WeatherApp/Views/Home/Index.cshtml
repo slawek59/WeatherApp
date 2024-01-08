@@ -2,48 +2,20 @@
 
 @{
 	ViewBag.Title = "Weather App by Vonzo";
-
-	string GetCssClass(int Temperature)
-	{
-		return Temperature switch
-		{
-			(< 44) => "blue-back",
-			(>= 44) and (< 75) => "green-back",
-			(>= 75) => "orange-back",
-		};
-	}
 }
 
-	<div class="page-content">
-		<div class="header">
-			<h1>Welcome to the worlds greatest WEATHER APP!</h1>
-		</div>
-
-		<div class="margin-left margin-top">
-
-			@foreach (CityWeather city in Model)
-			{
-				<div class="box w-30 margin-auto @GetCssClass(city.TemperatureFahrenheit)">
-					<div class="flex-borderless">
-						<div class="w-50">
-							<p>
-								<b>@city.CityName</b>
-							</p>
-
-							<p class="text-dark-grey">
-								<font size="2"><b> @city.DateAndTime.ToShortTimeString() AM</b></font>
-							</p>
-
-							<font size="2"> <a href="weather/@city.CityUniqueCode">Details</a></font>
-						</div>
-
-						<div class="border-left w-50">
-							<p class="padding-left">
-								<b>@city.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
-							</p>
-						</div>
-					</div>
-				</div>
-			}
-		</div>
+<div class="page-content">
+	<div class="header">
+		<h1>Welcome to the worlds greatest WEATHER APP!</h1>
 	</div>
+
+	<div class="margin-left margin-top" id="city">
+
+		@foreach (CityWeather city in Model)
+		{
+			<partial name="_CityPartialView" model="city"></partial>
+		}
+
+	</div>
+
+</div>

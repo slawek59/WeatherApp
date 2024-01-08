@@ -1,0 +1,67 @@
+﻿@model CityWeather
+
+@{
+	string GetCssClass(int Temperature)
+	{
+		return Temperature switch
+		{
+			(< 44) => "blue-back",
+			(>= 44) and (< 75) => "green-back",
+			(>= 75) => "orange-back",
+		};
+	}
+}
+
+<div class="box w-30 margin-auto @GetCssClass(Model.TemperatureFahrenheit)">
+	<div class="flex-borderless">
+		<div class="w-50">
+			<p>
+				<b>@Model.CityName</b>
+			</p>
+
+			@* <p class="text-dark-grey">
+			<font size="2"><b> @city.DateAndTime.ToShortTimeString()</b></font>
+			</p> *@
+
+			<font size="2"> <a href="weather/@Model.CityUniqueCode">Open Details</a></font>
+		</div>
+
+		<div class="border-left w-50">
+			<p class="padding-left">
+				<b>@Model.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
+			</p>
+		</div>
+
+	</div>
+
+	<button class="button margin-auto" type="button" id="@Model.CityUniqueCode">
+		Load details
+	</button>
+</div>
+
+@* CityWeather cityWeather = new CityWeather();
+		cityWeather.CityName = city.CityName;
+		cityWeather.DateAndTime = city.DateAndTime;
+		cityWeather.TemperatureFahrenheit = city.TemperatureFahrenheit; *@
+
+<div class="w-100 margin-auto @Model.CityUniqueCode">
+</div>
+
+<script>
+	document.addEventListener("click",
+		async function () {
+			var id = document.activeElement.id
+			var response = await fetch("details-dropdown/" + id);
+			var index = await response.text();
+			document.querySelector("." + id).innerHTML = index
+		})
+</script>
+
+<script>
+	document.addEventListener("mouseout",
+		async function () {
+			var id = document.activeElement.id
+
+			document.querySelector("." + id).innerHTML = null
+		})
+</script>

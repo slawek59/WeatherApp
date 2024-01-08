@@ -269,6 +269,13 @@ a:hover
     background-color: #faca70;
 }
 
+.button-blue-back
+{
+    background-color: #3a81bd;
+    color: #ffffff;
+    border: 2px solid #3f80ca;
+}
+
 
 .footer-content
 {

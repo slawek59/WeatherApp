@@ -1,42 +1,39 @@
 ﻿@model CityWeather
 
-
 @{
 	ViewBag.Title = $"{@Model.CityName} City Weather";
 }
 
-
-	
-	<div class="page-content">
-		<div class="header">
-			<h1>Weather for @Model.CityName</h1>
-		</div>
-		<div class="container margin-top-200 text-center">
-			<div class="box w-30 margin-auto">
-				<div class="flex-borderless">
-					<div class="w-50">
-						<p>
-							<b>@Model.CityName</b>
-						</p>
-
-						<p class="text-grey">
-							<font size="2"><b>@Model.DateAndTime.ToShortDateString()</b></font>
-						</p>
-
-						<p class="text-grey">
-							<font size="2"><b>@Model.DateAndTime.ToShortTimeString()</b></font>
-						</p>
-					</div>
-					<div class="border-left w-50">
-						<p>
-							<b>@Model.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
-						</p>
-					</div>
-
-				</div>
-			</div>
-			<p>
-				<font size="2"><a href="/">Back to the Weather App Home Page</a></font>
-			</p>
-		</div>
+<div class="page-content">
+	<div class="header">
+		<h1>Weather for @Model.CityName</h1>
 	</div>
+	<div class="container margin-top-200 text-center">
+		<div class="box w-30 margin-auto">
+			<div class="flex-borderless">
+				<div class="w-50">
+					<p>
+						<b>@Model.CityName</b>
+					</p>
+
+					<p class="text-grey">
+						<font size="2"><b>@Model.DateAndTime.ToShortDateString()</b></font>
+					</p>
+
+					<p class="text-grey">
+						<font size="2"><b>@Model.DateAndTime.ToShortTimeString()</b></font>
+					</p>
+				</div>
+				<div class="border-left w-50">
+					<p>
+						<b>@Model.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
+					</p>
+				</div>
+
+			</div>
+		</div>
+		<p>
+			<font size="2"><a href="/">Back to the Weather App Home Page</a></font>
+		</p>
+	</div>
+</div>
