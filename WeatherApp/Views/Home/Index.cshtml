@@ -11,9 +11,10 @@
 
 	<div class="margin-left margin-top" id="city">
 
-		@foreach (CityWeather city in Model)
+		@foreach (CityWeather item in Model)
 		{
-			<partial name="_CityPartialView" model="city"></partial>
+			// <partial name="_CityPartialView" model="city"></partial>
+			@await Component.InvokeAsync("City", new { city = item})
 		}
 
 	</div>

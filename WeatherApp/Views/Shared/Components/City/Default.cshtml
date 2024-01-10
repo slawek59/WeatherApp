@@ -1,0 +1,29 @@
+﻿@model CityWeather
+
+<div class="box w-30 margin-auto @ViewBag.CssClass">
+	<div class="flex-borderless">
+		<div class="w-50">
+			<p>
+				<b>@Model.CityName</b>
+			</p>
+
+			<font size="2"> <a href="weather/@Model.CityUniqueCode">Open Details</a></font>
+		</div>
+
+		<div class="border-left w-50">
+			<p class="padding-left">
+				<b>@Model.TemperatureFahrenheit</b> <span class="text-grey"><b><sup>&#176F</sup></b></span>
+			</p>
+		</div>
+
+	</div>
+
+	<button class="button margin-auto" type="button" id="@Model.CityUniqueCode">
+		Load details
+	</button>
+</div>
+
+<div class="w-100 margin-auto @Model.CityUniqueCode">
+</div>
+
+<script src="~/detailsButton.js"></script>
