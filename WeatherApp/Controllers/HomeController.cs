@@ -1,30 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WeatherApp.Models;
+using ServiceContracts;
 
 namespace WeatherApp.Controllers
 {
 	public class HomeController : Controller
 	{
-		private List<CityWeather> cityWeatherList = new List<CityWeather>()
-			{
-				new CityWeather() { CityUniqueCode = "LDN", CityName = "London", DateAndTime = DateTime.Now.AddHours(-1), TemperatureFahrenheit = 33},
-
-				new CityWeather() { CityUniqueCode = "NYC", CityName = "New York", DateAndTime = DateTime.Now.AddHours(-6), TemperatureFahrenheit = 60},
-
-				// this date and time is just for the sake of being here
-				new CityWeather() { CityUniqueCode = "PAR", CityName = "Paris", DateAndTime = Convert.ToDateTime("2030-01-01 9:00"), TemperatureFahrenheit = 82},
-
-				new CityWeather() { CityUniqueCode = "GDA", CityName = "Gdańsk", DateAndTime = DateTime.Now, TemperatureFahrenheit = 30},
-				
-				new CityWeather() { CityUniqueCode = "WRO", CityName = "Wrocław", DateAndTime = DateTime.Now, TemperatureFahrenheit = 90},
-				
-				new CityWeather() { CityUniqueCode = "KRK", CityName = "Kraków", DateAndTime = DateTime.Now, TemperatureFahrenheit = 50}
-			};
+		private readonly IWeatherService _weatherService;
+		public HomeController(IWeatherService weatherService)
+		{
+			_weatherService = weatherService;
+		}
 
 		[Route("/")]
 		[Route("home")]
 		public IActionResult Index()
 		{
+			var cityWeatherList = _weatherService.GetWeatherDetails();
+
 			return View(cityWeatherList);
 		}
 
@@ -37,7 +29,7 @@ namespace WeatherApp.Controllers
 				return View("ErrorPage");
 			}
 
-			CityWeather? city = cityWeatherList.Where(temp => temp.CityUniqueCode == cityCode).FirstOrDefault();
+			var city = _weatherService.GetWeatherByCityCode(cityCode);
 
 			if (city == null)
 			{
@@ -49,13 +41,21 @@ namespace WeatherApp.Controllers
 		}
 
 		[Route("details-dropdown/{id}")]
-		public IActionResult DetailsDropdown(string id)
+		public IActionResult DetailsDropdown()
 		{
-			var code = id;
+			string cityCode = HttpContext.Request.RouteValues["id"].ToString();
 
-			var nameToChange = cityWeatherList.Where(temp => temp.CityUniqueCode == code).FirstOrDefault();
+			if (string.IsNullOrEmpty(cityCode))
+			{
+				HttpContext.Response.StatusCode = 404;
+				return View("ErrorPage");
+			}
 
-			return PartialView("_DetailsPartialView", nameToChange);
+			//var nameToChange = cityWeatherList.Where(temp => temp.CityUniqueCode == code).FirstOrDefault();
+
+			var city = _weatherService.GetWeatherByCityCode(cityCode);
+
+			return PartialView("_DetailsPartialView", city);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WeatherApp.Models;
+using Models;
 
 namespace WeatherApp.ViewComponents
 {
@@ -8,8 +8,8 @@ namespace WeatherApp.ViewComponents
 	{
 		public async Task<IViewComponentResult> InvokeAsync(CityWeather city)
 		{
-			ViewBag.CssClass = GetCssClass(city.TemperatureFahrenheit); 
-				
+			ViewBag.CssClass = GetCssClass(city.TemperatureFahrenheit);
+
 			return View(city);
 		}
 		private string GetCssClass(int Temperature)

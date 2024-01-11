@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Frmx4kGIX5xdh6T2S3KJqpw/wBDsRjuyAqVGGsc5YF4=",
+  "Hash": "0AY9e9/pVrWtbqhvA/GSfQlzNX1GET81zsp+PkDzZSM=",
   "Source": "WeatherApp",
   "BasePath": "_content/WeatherApp",
   "Mode": "Default",
@@ -34,12 +34,12 @@
       "OriginalItemSpec": "wwwroot\\detailsButton.js"
     },
     {
-      "Identity": "C:\\Users\\wassl\\OneDrive\\Pulpit\\SLAWOMIR\\Kodowanie\\WeatherApp\\WeatherApp\\WeatherApp\\wwwroot\\StyleSheet (1).css",
+      "Identity": "C:\\Users\\wassl\\OneDrive\\Pulpit\\SLAWOMIR\\Kodowanie\\WeatherApp\\WeatherApp\\WeatherApp\\wwwroot\\StyleSheet.css",
       "SourceId": "WeatherApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\wassl\\OneDrive\\Pulpit\\SLAWOMIR\\Kodowanie\\WeatherApp\\WeatherApp\\WeatherApp\\wwwroot\\",
       "BasePath": "_content/WeatherApp",
-      "RelativePath": "StyleSheet (1).css",
+      "RelativePath": "StyleSheet.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,7 +48,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\StyleSheet (1).css"
+      "OriginalItemSpec": "wwwroot\\StyleSheet.css"
     }
   ]
 }
